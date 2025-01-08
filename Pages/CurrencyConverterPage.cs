@@ -35,14 +35,14 @@ namespace XECurrencyConverter.Pages
         {
             Click(sourceCurrencyField);
             EnterText(sourceCurrencyField, sourceCurrency);
-            Click(By.XPath($"//*[(contains(@class,'converterform-dropdown__option') or contains(@class,'ListboxOption')) and contains(.,'{sourceCurrency}')]"));
+            Click(By.XPath($"//div[@class = 'flex' and contains(.,'{sourceCurrency}')]"));
         }
 
         public void SelectTargetCurrency(string targetCurrency)
         {
             Click(targetCurrencyField);
             EnterText(targetCurrencyField, targetCurrency);
-            Click(By.XPath($"//*[(contains(@class,'converterform-dropdown__option') or contains(@class,'ListboxOption')) and contains(.,'{targetCurrency}')]"));
+            Click(By.XPath($"//div[@class = 'flex' and contains(.,'{targetCurrency}')]"));
         }
 
         public void Convert()

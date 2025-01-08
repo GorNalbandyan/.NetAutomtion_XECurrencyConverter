@@ -5,8 +5,9 @@ namespace XECurrencyConverter.Pages
 {
     internal class ConversionResultsPage : BasePage
     {
-        private readonly By convertedFullAmount = By.CssSelector(".result__BigRate-sc-1bsijpp-1");
-        private readonly By convertedSingleUnitAmount = By.CssSelector(".unit-rates___StyledDiv-sc-1dk593y-0");
+        private readonly By convertedFullAmount = By.XPath("//p[@class = 'sc-b5d1d4ba-1 bPeOTN']");
+        private readonly By fromSourceToTarget = By.XPath("//*[@class = 'sc-98b4ec47-0 jnAVFH']/p[1]");
+        private readonly By fromTargetToSource = By.XPath("//*[@class = 'sc-98b4ec47-0 jnAVFH']/p[2]");
 
         public ConversionResultsPage(IWebDriver driver) : base(driver)
         {
@@ -19,9 +20,8 @@ namespace XECurrencyConverter.Pages
 
         public Tuple<string, string> GetConvertedFullAndSingleUnitAmountText()
         {
-            string conversionUnitAmountText = GetText(convertedSingleUnitAmount);
-            string fromSourceToTargetText = conversionUnitAmountText.Split("\r\n")[0];
-            string fromTargetToSourceText = conversionUnitAmountText.Split("\r\n").Last();
+            string fromSourceToTargetText = GetText(fromSourceToTarget);
+            string fromTargetToSourceText = GetText(fromTargetToSource);
             return Tuple.Create(fromSourceToTargetText, fromTargetToSourceText);
         }
 

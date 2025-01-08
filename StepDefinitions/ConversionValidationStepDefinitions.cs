@@ -5,6 +5,7 @@ using XECurrencyConverter.Steps;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using System.Linq;
 
 namespace XECurrencyConverter.StepDefinitions
 {
@@ -30,9 +31,9 @@ namespace XECurrencyConverter.StepDefinitions
             Assert.Multiple(() =>
             {
                 Assert.IsTrue(unitConversionAmountText.Item1.Contains($"1 {CurrencyListWithAbbreviation.currencyAbbrDict[sourceCurrency]} = ") && unitConversionAmountText.
-                    Item1.Contains($"{CurrencyListWithAbbreviation.currencyAbbrDict[targetCurrency]}"));
+                    Item1.Contains($"{CurrencyListWithAbbreviation.currencyAbbrDict[targetCurrency]}"), "Single Unit amount is not correctly displayed");
                 Assert.IsTrue(unitConversionAmountText.Item2.Contains($"1 {CurrencyListWithAbbreviation.currencyAbbrDict[targetCurrency]} = ") && unitConversionAmountText.
-                    Item2.Contains($"{CurrencyListWithAbbreviation.currencyAbbrDict[sourceCurrency]}"));
+                    Item2.Contains($"{CurrencyListWithAbbreviation.currencyAbbrDict[sourceCurrency]}"), "Single Unit amount vice versa is not correctly displayed");
             });
         }
 

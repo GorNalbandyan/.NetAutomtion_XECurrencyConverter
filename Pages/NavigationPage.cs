@@ -5,7 +5,7 @@ namespace XECurrencyConverter.Pages
 {
     internal class NavigationPage : BasePage
     {
-        private readonly By registerBtn = By.XPath("//button[(text()= 'Register')]");
+        private readonly By registerBtn = By.XPath("//span[(text()= 'Register')]");
 
         public NavigationPage(IWebDriver driver) : base(driver)
         {
